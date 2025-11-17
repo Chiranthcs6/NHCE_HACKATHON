@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Viewer - Chakravyuha</title>
+    <link rel="stylesheet" href="video-viewer.css">
+</head>
+<body>
+    <div class="video-container">
+        <div class="video-header">
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+            <h1>Trigger Video Playback</h1>
+        </div>
+
+        <div class="video-info">
+            <div class="info-card">
+                <strong>DATE:</strong>
+                <span id="dateDisplay">-</span>
+            </div>
+            <div class="info-card">
+                <strong>TIME:</strong>
+                <span id="timeDisplay">-</span>
+            </div>
+            <div class="info-card">
+                <strong>TRIGGER:</strong>
+                <span id="triggerDisplay">-</span>
+            </div>
+            <div class="info-card feedback-card">
+                <strong>FEEDBACK:</strong>
+                <div class="feedback-buttons">
+                    <button id="intrusionYesBtn" class="feedback-btn intrusion-yes-btn" onclick="handleFeedback('yes')">
+                        ✓ Intrusion
+                    </button>
+                    <button id="intrusionNoBtn" class="feedback-btn intrusion-no-btn" onclick="handleFeedback('no')">
+                        ✗ Not Intrusion
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-player">
+            <video id="videoPlayer" controls autoplay>
+                <source id="videoSource" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script src="video-viewer.js"></script>
+</body>
+</html>

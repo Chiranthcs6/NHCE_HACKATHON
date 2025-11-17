@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chakravyuha</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- ✅ Add Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- ✅ Sidebar with ID for sensor logs -->
+        <aside class="sidebar">
+            <div id="sensorLogs">Loading sensor logs...</div>
+        </aside>
+        
+        <main class="dashboard">
+ <section class="intrusion-graph">
+    <h2>Intrusion Probability Trend</h2>
+    <div style="position: relative; height: 400px; width: 100%;">
+        <canvas id="intrusionChart"></canvas>
+    </div>
+</section>
+
+            
+            <!-- ✅ Trigger section with ID -->
+            <section class="trigger-info">
+                <div id="triggerInfo">Loading trigger info...</div>
+            </section>
+        </main>
+
+
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger-menu" id="hamburgerMenu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+
+        <!-- Profile Slide Panel -->
+        <div class="profile-panel" id="profilePanel">
+            <h3>Profile</h3>
+            
+            <div class="profile-field">
+                <strong>Name:</strong>
+                <span id="displayName" class="display-value">User Name</span>
+                <input type="text" id="editName" class="edit-input" style="display:none;">
+            </div>
+            
+            <div class="profile-field">
+                <strong>Email:</strong>
+                <span id="displayEmail" class="display-value">user@email.com</span>
+                <input type="email" id="editEmail" class="edit-input" style="display:none;">
+            </div>
+            
+            <div class="profile-field">
+                <strong>Phone:</strong>
+                <span id="displayPhone" class="display-value">1234567890</span>
+                <input type="tel" id="editPhone" class="edit-input" style="display:none;">
+            </div>
+
+
+            <!-- Sleep Time Section - Weekdays -->
+            <div class="profile-field">
+                <strong>Sleep Time (Weekdays):</strong>
+                <div id="displayWeekdaySleep" class="display-value threshold-display">
+                    <div>Start: <span id="displayWeekdaysStart">10:00 PM</span></div>
+                    <div>End: <span id="displayWeekdaysEnd">06:00 AM</span></div>
+                </div>
+                <div id="editWeekdaysSleep" class="threshold-edit" style="display:none;">
+                    <div class="time-input-group">
+                        <label>Start Time:</label>
+                        <input type="time" id="editWeekdaysStart" class="edit-input time-input">
+                    </div>
+                    <div class="time-input-group">
+                        <label>End Time:</label>
+                        <input type="time" id="editWeekdaysEnd" class="edit-input time-input">
+                    </div>
+                </div>
+            </div>
+
+<div id="probabilityIndicator" class="probability-indicator">
+    <span id="probSymbol">🟢</span>
+    <span id="probText">Safe</span>
+</div>
+
+            <!-- Sleep Time Section - Weekends -->
+            <div class="profile-field">
+                <strong>Sleep Time (Weekends):</strong>
+                <div id="displayWeekendSleep" class="display-value threshold-display">
+                    <div>Start: <span id="displayWeekendsStart">11:00 PM</span></div>
+                    <div>End: <span id="displayWeekendsEnd">08:00 AM</span></div>
+                </div>
+                <div id="editWeekendsSleep" class="threshold-edit" style="display:none;">
+                    <div class="time-input-group">
+                        <label>Start Time:</label>
+                        <input type="time" id="editWeekendsStart" class="edit-input time-input">
+                    </div>
+                    <div class="time-input-group">
+                        <label>End Time:</label>
+                        <input type="time" id="editWeekendsEnd" class="edit-input time-input">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Threshold Values Section -->
+            <div class="profile-field">
+                <strong>Threshold Values:</strong>
+                <div id="displayThresholdValues" class="display-value threshold-display">
+                    <div>High: <span id="displayHighValue">80</span></div>
+                    <div>Medium: <span id="displayMediumValue">50</span></div>
+                    <div>Low: <span id="displayLowValue">20</span></div>
+                </div>
+                <div id="editThresholdValues" class="threshold-edit" style="display:none;">
+                    <div class="threshold-value-group">
+                        <label>High:</label>
+                        <input type="number" id="editHighValue" class="edit-input" min="0" max="100" placeholder="e.g., 80">
+                    </div>
+                    <div class="threshold-value-group">
+                        <label>Medium:</label>
+                        <input type="number" id="editMediumValue" class="edit-input" min="0" max="100" placeholder="e.g., 50">
+                    </div>
+                    <div class="threshold-value-group">
+                        <label>Low:</label>
+                        <input type="number" id="editLowValue" class="edit-input" min="0" max="100" placeholder="e.g., 20">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Vacation Mode Section -->
+            <div class="profile-field">
+                <strong>Vacation Mode:</strong>
+                <div class="vacation-mode-container">
+                    <label class="switch">
+                        <input type="checkbox" id="vacationModeToggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="vacationModeStatus" class="vacation-status">OFF</span>
+                </div>
+                <p class="vacation-description">Enable to simulate occupancy and reduce false alerts while away</p>
+            </div>
+            
+            <div class="profile-actions">
+                <button id="changeBtn" class="action-btn">Change</button>
+                <button id="saveBtn" class="action-btn save-btn" style="display:none;">Save</button>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
+
